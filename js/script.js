@@ -30,12 +30,16 @@ Applicare de controlli sull'input dell'utente */
 
 //Ora riportiamo tutto in js:
 
-let message = "";
+/* let message = "";
 const userKmString = prompt("Scrivi i km che vuoi percorrere");
 const userAgeString = prompt("Scrivi la tua età");
 console.log(userKmString, userAgeString);
 
-const userKm = parseInt(userKmString);
+/* if (isNaN(userKm) || isNaN(userAge)) {
+    console.log("Devi inserire SOLO valori numerici! Ricarica la pagina!")
+} */
+
+/* const userKm = parseInt(userKmString);
 const userAge = parseInt(userAgeString);
 console.log(userKm, userAge);
 
@@ -61,4 +65,49 @@ if (minorAge) {
 } else if (overAge) {
     message = `Il prezzo del tuo biglietto è di ${overAge} €`;
 }
-console.log(message);
+console.log(message); */
+
+//CORREZIONE ESERCIZIO IN CLASSE:
+//I 3 punti fondamentali:
+//RACCOLTA DATI:
+//chiedere all utente il numero di km
+//chiedere eta all utente
+//salvare in una variabile il prezzo base
+
+//ESECUZIONE LOGICA:
+//transformare i dati in numeri
+//calcolare il prezzo base km * prezzo per km
+//SE è minorenne: sconto 20%
+//SE over65: sconto 40%
+//ALTRIMENTI: sconto 0
+
+//OUTPUT:
+//Stampo il messaggio finale
+
+//Traduciamo tutto in JS:
+const userKmString = prompt("Scrivi qui quanti km vuoi percorrere", 10);
+const userAgeString = prompt("Scrivi qui l'età del passeggero", 18);
+
+const priceKm = 0.21;
+
+const userKm = parseInt(userKmString);
+const userAge = parseInt(userAgeString);
+
+const ticketPrice = (userKm * priceKm);
+
+let percDiscount = 0;
+//Entriamo ora nei condizionali:
+
+if (userAge < 18) {
+    percDiscount = 20;
+} else if (userAge >= 65) {
+    percDiscount = 40;
+}
+
+const discount = (ticketPrice * percDiscount) / 100;
+const finalPrice = (ticketPrice - discount);
+console.log(finalPrice.toFixed(2));
+
+if (isNaN(userKm) || isNaN(userAge)) {
+    console.log("Devi inserire un valore numerico!");
+}
